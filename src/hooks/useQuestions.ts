@@ -7,4 +7,4 @@ function useQuestions() {
 	return data;
 }
 
-export default useQuestions();
+export default useQuestions;
