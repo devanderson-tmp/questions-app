@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import useQuestions from '../../hooks/useQuestions';
 import api from '../../services/api';
+import { QuestionProps } from '../../types/question';
 import { shuffle } from '../../utils/functions';
 
 function Home() {
@@ -24,7 +25,7 @@ function Home() {
 		e.preventDefault();
 
 		api.get(`?amount=${num}`).then(res => {
-			const parsedJson = res.data.results.map((item: any) => {
+			const parsedJson = res.data.results.map((item: QuestionProps) => {
 				item.selected_answer = '', item.answers = [item.correct_answer, ...item.incorrect_answers];
 
 				shuffle(item.answers);

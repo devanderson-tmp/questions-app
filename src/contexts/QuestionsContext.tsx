@@ -1,15 +1,5 @@
 import React, { createContext, useState } from 'react';
-
-interface QuestionProps {
-	answers: string[];
-	category: string;
-	correct_answer: string;
-	difficulty: string;
-	incorrect_answers: string[];
-	question: string;
-	selected_answer: string;
-	type: string;
-}
+import { QuestionProps } from '../types/question';
 
 interface QCInterface {
 	questions: QuestionProps[];
