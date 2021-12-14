@@ -1,13 +1,13 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import useQuestions from '../../hooks/useQuestions';
 import api from '../../services/api';
-import { QuestionProps } from '../../types/question';
+import { QuestionProps } from '../../types';
 import { shuffle } from '../../utils/functions';
 
 function Home() {
 	const [showButtons, setShowButtons] = useState(false);
 	const [num, setNum] = useState('');
-	const { questions, setQuestions } = useQuestions();
+	const { setQuestions } = useQuestions();
 
 	function handleChange(e: ChangeEvent<HTMLInputElement>) {
 		if (e.target.valueAsNumber > 0) setShowButtons(true);
@@ -41,7 +41,6 @@ function Home() {
 		<main>
 			<h1>Welcome to the Questions App!!</h1>
 			<p>How many questions do you want to answer?</p>
-			{console.log(questions)}
 
 			<form onSubmit={handleSubmit}>
 				<input type="number" name="num" id="num" value={num} onChange={handleChange} data-testid='num' />

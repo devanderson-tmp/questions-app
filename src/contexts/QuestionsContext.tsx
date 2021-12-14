@@ -1,10 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { QuestionProps } from '../types/question';
-
-interface QCInterface {
-	questions: QuestionProps[];
-	setQuestions: (questions: QuestionProps[]) => void;
-}
+import { QCInterface, QuestionProps } from '../types';
 
 const QuestionsContext = createContext<QCInterface>({} as QCInterface);
 

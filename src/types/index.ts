@@ -1,3 +1,8 @@
+export interface QCInterface {
+	questions: QuestionProps[];
+	setQuestions: (questions: QuestionProps[]) => void;
+}
+
 export interface QuestionProps {
 	answers: string[];
 	category: string;
