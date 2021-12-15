@@ -1,6 +1,5 @@
 import React from 'react';
-import { renderHook } from '@testing-library/react-hooks';
-import { act } from 'react-dom/test-utils';
+import { act, renderHook } from '@testing-library/react-hooks';
 import useQuestions from '../hooks/useQuestions';
 import { QuestionsContextProvider } from './QuestionsContext';
 
