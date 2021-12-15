@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useQuestions from '../../hooks/useQuestions';
 import api from '../../services/api';
 import { QuestionProps } from '../../types';
@@ -8,6 +9,7 @@ function Home() {
 	const [showButtons, setShowButtons] = useState(false);
 	const [num, setNum] = useState('');
 	const { setQuestions } = useQuestions();
+	const navigate = useNavigate();
 
 	function handleChange(e: ChangeEvent<HTMLInputElement>) {
 		if (e.target.valueAsNumber > 0) setShowButtons(true);
@@ -21,10 +23,10 @@ function Home() {
 		setShowButtons(false);
 	}
 
-	function handleSubmit(e: FormEvent) {
+	async function handleSubmit(e: FormEvent) {
 		e.preventDefault();
 
-		api.get(`?amount=${num}`).then(res => {
+		await api.get(`?amount=${num}`).then(res => {
 			const parsedJson = res.data.results.map((item: QuestionProps) => {
 				item.selected_answer = '', item.answers = [item.correct_answer, ...item.incorrect_answers];
 
@@ -34,6 +36,8 @@ function Home() {
 			});
 
 			setQuestions(parsedJson);
+
+			navigate('/questions');
 		}).catch(error => console.error(error));
 	}
 
