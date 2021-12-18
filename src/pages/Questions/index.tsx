@@ -1,51 +1,63 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
+import { FieldArray, Form, Formik, getIn } from 'formik';
+import * as Yup from 'yup';
 import useQuestions from '../../hooks/useQuestions';
 
 function Questions() {
 	const { questions, setQuestions } = useQuestions();
 
-	function handleChange(e: FormEvent<HTMLInputElement>, q_index: number) {
-		const question = questions.filter((item, index) => {
-			if (index === q_index) {
-				item.selected_answer = e.currentTarget.value;
-			}
-
-			return item;
-		});
-
-		setQuestions(question);
-	}
-
-	function handleSubmit(e: FormEvent) {
-		e.preventDefault();
-
-		console.log(questions);
-	}
-
 	return (
 		<main>
 			<h1>Questions</h1>
 
-			<form onSubmit={handleSubmit}>
-				{
-					questions.map((q, q_index) => (
-						<fieldset key={q_index}>
-							<legend>{q.question}</legend>
-							{
-								q.answers.map((answer, a_index) => (
-									<div key={a_index}>
-										<input type="radio" name={`${q.question}`} id={`${answer}`} value={answer} onChange={(e) => handleChange(e, q_index)} />
-										<label htmlFor={`${answer}`}>{answer}</label>
-									</div>
-								))
-							}
-						</fieldset>
-					))
-				}
+			<Formik
+				initialValues={{ questions }}
+				onSubmit={(values) => {
+					setQuestions(values.questions);
+					console.log(questions);
+					localStorage.setItem('questions', JSON.stringify(values.questions));
+				}}
+				validationSchema={Yup.object({
+					questions: Yup.array().of(
+						Yup.object().shape({
+							selected_answer: Yup.string().required('required')
+						})
+					)
+				})}
+			>
+				{({ errors, handleBlur, handleChange, touched, values }) => (
+					<Form>
+						<FieldArray
+							name='questions'
+							render={() => (
+								values.questions.map((q, q_index) => {
+									const name = `questions.${q_index}.selected_answer`;
+									const error = getIn(errors, name);
+									const errorTouched = getIn(touched, name);
 
-				<button type="submit">Enviar</button>
-			</form>
-		</main>
+									return (
+										<fieldset key={q_index} style={error && errorTouched ? { borderColor: 'red' } : undefined}>
+											<legend dangerouslySetInnerHTML={{ __html: q.question }} />
+
+											{
+												q.answers.map((answer, a_index) => (
+													<div key={a_index}>
+														<input type="radio" name={name} id={`${answer}`} value={answer} onBlur={handleBlur} onChange={handleChange} />
+														<label htmlFor={`${answer}`}>{answer}</label>
+													</div>
+												))
+											}
+										</fieldset>
+									);
+								})
+							)}
+						/>
+
+						<button type="submit">Send</button>
+					</Form>
+				)}
+			</Formik>
+		</main >
 	);
 }
 
