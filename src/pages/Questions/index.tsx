@@ -16,7 +16,7 @@ function Questions() {
 				initialValues={{ questions }}
 				onSubmit={(values) => {
 					setQuestions(values.questions);
-					localStorage.setItem('questions', JSON.stringify(questions));
+					localStorage.setItem('questions', JSON.stringify(values.questions));
 					navigate('result');
 				}}
 				validationSchema={Yup.object({
