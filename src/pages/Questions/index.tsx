@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FieldArray, Form, Formik, getIn } from 'formik';
 import * as Yup from 'yup';
 import useQuestions from '../../hooks/useQuestions';
 
 function Questions() {
 	const { questions, setQuestions } = useQuestions();
+	const navigate = useNavigate();
 
 	return (
 		<main>
@@ -14,8 +16,8 @@ function Questions() {
 				initialValues={{ questions }}
 				onSubmit={(values) => {
 					setQuestions(values.questions);
-					console.log(questions);
-					localStorage.setItem('questions', JSON.stringify(values.questions));
+					localStorage.setItem('questions', JSON.stringify(questions));
+					navigate('result');
 				}}
 				validationSchema={Yup.object({
 					questions: Yup.array().of(

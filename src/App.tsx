@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QuestionsContextProvider } from './contexts/QuestionsContext';
 import Home from './pages/Home';
 import Questions from './pages/Questions';
+import Result from './pages/Result';
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/questions' element={<Questions />} />
+					<Route path='/questions/result' element={<Result />} />
 				</Routes>
 			</BrowserRouter>
 		</QuestionsContextProvider>
