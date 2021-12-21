@@ -36,10 +36,6 @@ export const Input = styled.input<InputProps>`
 	padding: .625rem;
 `;
 
-export const ButtonCancel = styled.button`
-	background-color: #c0180a;
-`;
-
 export const RecentlyLink = styled(Link)`
 	color: #423440;
 	font-size: 1.125rem;

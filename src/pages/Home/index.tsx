@@ -63,7 +63,7 @@ function Home() {
 				<div className='flex flex--center' style={localStorage.length > 0 ? { marginBottom: '3.125rem' } : undefined}>
 					{formik.values.num > 0 && (
 						<>
-							<Styled.ButtonCancel type="reset" className='button'>Cancel</Styled.ButtonCancel>
+							<button type="reset" className='button' style={{ backgroundColor: '#c0180a' }}>Cancel</button>
 							<button type="submit" className='button'>Start</button>
 						</>
 					)}
