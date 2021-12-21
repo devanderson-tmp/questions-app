@@ -4,10 +4,12 @@ import { QuestionsContextProvider } from './contexts/QuestionsContext';
 import Home from './pages/Home';
 import Questions from './pages/Questions';
 import Result from './pages/Result';
+import GlobalStyle from './components/GlobalStyle';
 
 function App() {
 	return (
 		<QuestionsContextProvider>
+			<GlobalStyle />
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<Home />} />

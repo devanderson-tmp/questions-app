@@ -6,6 +6,7 @@ import useQuestions from '../../hooks/useQuestions';
 import api from '../../services/api';
 import { QuestionProps } from '../../types';
 import { shuffle } from '../../utils/functions';
+import * as Styled from './style';
 
 interface FormValues {
 	num: number | string;
@@ -40,27 +41,41 @@ function Home() {
 	});
 
 	return (
-		<main>
-			<h1>Welcome to the Questions App!!</h1>
+		<Styled.Main className='container flex flex--center flex--column'>
+			<Styled.Title>Welcome to the Questions App!!</Styled.Title>
 
-			<form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
-				<div>
-					<label htmlFor="num">How many questions do you want to answer?</label>
-					<input type="number" name="num" id="num" data-testid='num' value={formik.values.num} onBlur={formik.handleBlur} onChange={formik.handleChange} />
-
-					{formik.errors.num && formik.touched.num ? (
-						<span role='alert'>{formik.errors.num}</span>
-					) : null}
+			<Styled.Form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
+				<div className='flex flex--column'>
+					<Styled.Label htmlFor="num">How many questions do you want to answer?</Styled.Label>
+					<Styled.Input
+						type="number"
+						name="num"
+						id="num"
+						data-testid='num'
+						value={formik.values.num}
+						onBlur={formik.handleBlur}
+						onChange={formik.handleChange}
+						error={formik.errors.num}
+						touched={formik.touched.num}
+					/>
 				</div>
 
-				{formik.values.num > 0 && (
-					<div>
-						<button type="reset">Cancel</button>
-						<button type="submit">Start</button>
-					</div>
-				)}
-			</form>
-		</main>
+				<div className='flex flex--center' style={localStorage.length > 0 ? { marginBottom: '3.125rem' } : undefined}>
+					{formik.values.num > 0 && (
+						<>
+							<Styled.ButtonCancel type="reset" className='button'>Cancel</Styled.ButtonCancel>
+							<button type="submit" className='button'>Start</button>
+						</>
+					)}
+
+					{formik.errors.num && formik.touched.num ? (
+						<span role='alert' className='error-msg'>{formik.errors.num}</span>
+					) : null}
+				</div>
+			</Styled.Form>
+
+			{localStorage.length > 0 && <Styled.RecentlyLink to='/recently-answered-questions'>Recently answered questions</Styled.RecentlyLink>}
+		</Styled.Main>
 	);
 }
 
