@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import * as color from '../UI/variables';
 
 const GlobalStyle = createGlobalStyle`
 	* {
@@ -8,8 +9,8 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background-color: #edfeff;
-		color: #30252f;
+		background-color: ${color.primary};
+		color: ${color.tertiary};
 		font-family: 'Roboto', sans-serif;
 		font-weight: 400;
 		letter-spacing: 4%;
@@ -43,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	.error-msg {
-		color: #c0180a;
+		color: ${color.danger};
 		font-size: 1.125rem;
 		font-weight: 500;
 	}
@@ -52,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
 		background-color: #007ba3;
 		border: none;
 		border-radius: 5px;
-		color: #edfeff;
+		color: #faffe2;
 		cursor: pointer;
 		font-size: 1.5rem;
 		font-weight: 500;
