@@ -43,6 +43,11 @@ const GlobalStyle = createGlobalStyle`
 		justify-content: center;
 	}
 
+	.flex--between {
+		align-items: center;
+		justify-content: space-between;
+	}
+
 	.error-msg {
 		color: ${color.danger};
 		font-size: 1.125rem;
