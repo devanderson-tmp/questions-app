@@ -67,6 +67,11 @@ const GlobalStyle = createGlobalStyle`
 			filter: brightness(0.9);
 		}
 	}
+
+	.title {
+		font-size: 2.25rem;
+		font-weight: 700;
+	}
 `;
 
 export default GlobalStyle;

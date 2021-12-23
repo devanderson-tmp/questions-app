@@ -13,8 +13,6 @@ export const Main = styled.main`
 `;
 
 export const Title = styled.h1`
-	font-size: 2.25rem;
-	font-weight: 700;
 	margin-bottom: 3.125rem;
 `;
 
