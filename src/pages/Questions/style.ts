@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import * as color from '../../components/UI/variables';
-
-type ErrorProps = {
-	error: any;
-	errorTouched: any;
-}
+import { ErrorProps } from '../../types';
 
 export const Title = styled.h1`
 	margin-bottom: 1.5625rem;
@@ -36,18 +32,6 @@ export const CardContent = styled.div`
 
 export const CardOption = styled.input`
 	margin-right: 0.625rem;
-`;
-
-export const CardInfo = styled.span<ErrorProps>`
-	background-color: ${props => props.error && props.errorTouched ? color.danger : color.secondary};
-	border-radius: 5px;
-	color: #faffe2;
-	display: inline-block;
-	padding: .625rem;
-
-	:first-child {
-		margin-right: .625rem;
-	}
 `;
 
 export const CardMsgErro = styled.div`

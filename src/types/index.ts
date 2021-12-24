@@ -13,3 +13,8 @@ export interface QuestionProps {
 	selected_answer: string;
 	type: string;
 }
+
+export type ErrorProps = {
+	error: any;
+	errorTouched: any;
+}

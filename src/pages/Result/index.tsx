@@ -1,4 +1,5 @@
 import React from 'react';
+import InfoCard from '../../components/InfoCard';
 import { QuestionProps } from '../../types';
 
 function Result() {
@@ -11,12 +12,9 @@ function Result() {
 
 			{questions.map((q, q_index) => (
 				<div key={q_index}>
-					<div className='flex'>
-						<span>{q.category}</span>
-						<span>{q.difficulty}</span>
-					</div>
+					<InfoCard category={q.category} difficulty={q.difficulty} />
 
-					<p>{q.question}</p>
+					<p dangerouslySetInnerHTML={{ __html: `${q_index + 1}. ${q.question}` }} />
 
 					<span>Selected answer: {q.selected_answer != q.correct_answer ? <em>{q.selected_answer}</em> : <b>{q.selected_answer}</b>}</span>
 

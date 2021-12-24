@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FieldArray, Form, Formik, getIn } from 'formik';
 import * as Yup from 'yup';
 import useQuestions from '../../hooks/useQuestions';
+import InfoCard from '../../components/InfoCard';
 import * as Styled from './style';
 
 function Questions() {
@@ -41,11 +42,7 @@ function Questions() {
 									return (
 										<Styled.Card key={q_index} error={error} errorTouched={errorTouched}>
 											<div className='flex flex--between'>
-												<div>
-													<Styled.CardInfo error={error} errorTouched={errorTouched}>{q.category}</Styled.CardInfo>
-													<Styled.CardInfo error={error} errorTouched={errorTouched}>{q.difficulty}</Styled.CardInfo>
-												</div>
-
+												<InfoCard category={q.category} difficulty={q.difficulty} error={error} errorTouched={errorTouched} />
 												<span>{q_index + 1} of {values.questions.length}</span>
 											</div>
 
