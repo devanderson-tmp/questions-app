@@ -17,7 +17,7 @@ function Questions() {
 				initialValues={{ questions }}
 				onSubmit={(values) => {
 					setQuestions(values.questions);
-					localStorage.setItem('questions', JSON.stringify(values.questions));
+					localStorage.setItem('result', JSON.stringify(values.questions));
 					navigate('result');
 				}}
 				validationSchema={Yup.object({
@@ -49,7 +49,7 @@ function Questions() {
 												<span>{q_index + 1} of {values.questions.length}</span>
 											</div>
 
-											<Styled.CardTitle dangerouslySetInnerHTML={{ __html: q.question }} />
+											<Styled.CardTitle dangerouslySetInnerHTML={{ __html: `${q_index + 1}. ${q.question}` }} />
 
 											{error && errorTouched && <Styled.CardMsgErro role='alert' className='error-msg'>{error}</Styled.CardMsgErro>}
 
