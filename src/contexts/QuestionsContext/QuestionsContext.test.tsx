@@ -1,7 +1,7 @@
 import React from 'react';
 import { act, renderHook } from '@testing-library/react-hooks';
-import useQuestions from '../hooks/useQuestions';
-import { QuestionsContextProvider } from './QuestionsContext';
+import useQuestions from '../../hooks/useQuestions';
+import { QuestionsContextProvider } from '.';
 
 describe('QuestionsContext', () => {
 	it('should render ok', () => {
