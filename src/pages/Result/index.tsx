@@ -5,11 +5,12 @@ import * as Styled from './style';
 
 function Result() {
 	const questions: QuestionProps[] = JSON.parse(localStorage.getItem('result') || '');
+	const score: number = parseInt(localStorage['score']);
 
 	return (
 		<main className='container'>
 			<h1 className='title'>Result</h1>
-			<Styled.Subtitle>score of {questions.length} questions answered correctly</Styled.Subtitle>
+			<Styled.Subtitle>{score} of {questions.length} questions answered correctly</Styled.Subtitle>
 
 			{questions.map((q, q_index) => (
 				<Styled.Card key={q_index}>

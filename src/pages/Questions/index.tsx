@@ -19,6 +19,15 @@ function Questions() {
 				onSubmit={(values) => {
 					setQuestions(values.questions);
 					localStorage.setItem('result', JSON.stringify(values.questions));
+
+					const correct_answers = values.questions.filter(q => {
+						if (q.selected_answer === q.correct_answer) return q;
+
+						return false;
+					});
+
+					localStorage.setItem('score', `${correct_answers.length}`);
+
 					navigate('result');
 				}}
 				validationSchema={Yup.object({
