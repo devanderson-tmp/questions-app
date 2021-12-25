@@ -1,6 +1,7 @@
 import React from 'react';
 import InfoCard from '../../components/InfoCard';
 import { QuestionProps } from '../../types';
+import * as Styled from './style';
 
 function Result() {
 	const questions: QuestionProps[] = JSON.parse(localStorage.getItem('result') || '');
@@ -8,26 +9,30 @@ function Result() {
 	return (
 		<main className='container'>
 			<h1 className='title'>Result</h1>
-			<p>score of {questions.length} questions answered correctly</p>
+			<Styled.Subtitle>score of {questions.length} questions answered correctly</Styled.Subtitle>
 
 			{questions.map((q, q_index) => (
-				<div key={q_index}>
+				<Styled.Card key={q_index}>
 					<InfoCard category={q.category} difficulty={q.difficulty} />
 
-					<p dangerouslySetInnerHTML={{ __html: `${q_index + 1}. ${q.question}` }} />
+					<Styled.CardTitle dangerouslySetInnerHTML={{ __html: `${q_index + 1}. ${q.question}` }} />
 
-					<span>Selected answer: {q.selected_answer != q.correct_answer ? <em>{q.selected_answer}</em> : <b>{q.selected_answer}</b>}</span>
+					<div>Selected answer: <span className={q.selected_answer === q.correct_answer ? 'correct-answer' : 'incorrect-answer'}>{q.selected_answer}</span></div>
 
 					<ul>
 						{q.answers.map((answer, a_index) => (
-							<li key={a_index}>{answer}</li>
+							<Styled.CardItem
+								key={a_index}
+								className={answer === q.correct_answer ? 'correct-answer' : undefined}
+							>
+								{answer}
+							</Styled.CardItem>
 						))}
 					</ul>
-
-					<span>Correct answer: {q.correct_answer}</span>
-				</div>
-			))}
-		</main>
+				</Styled.Card>
+			))
+			}
+		</main >
 	);
 }
 

@@ -16,9 +16,9 @@ const GlobalStyle = createGlobalStyle`
 		letter-spacing: 4%;
 	}
 
-	a {
-		text-decoration: none;
-	}
+	a { text-decoration: none; }
+
+	ul { list-style: none; }
 
 	.container {
 		padding: 0 .625rem;
@@ -76,6 +76,16 @@ const GlobalStyle = createGlobalStyle`
 	.title {
 		font-size: 2.25rem;
 		font-weight: 700;
+	}
+
+	.correct-answer::before {
+		content: '✓';
+		color: ${color.success};
+	}
+
+	.incorrect-answer::before {
+		content: '✗';
+		color: ${color.danger};
 	}
 `;
 

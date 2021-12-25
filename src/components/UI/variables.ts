@@ -29,3 +29,8 @@ export const inverseTertiary = theme('mode', {
 	light: '#faffe2',
 	dark: '#30252f'
 });
+
+export const success = theme('mode', {
+	light: '#0db90d',
+	dark: '#21cf21'
+});
