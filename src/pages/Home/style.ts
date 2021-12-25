@@ -7,13 +7,14 @@ type InputProps = {
 	touched: boolean | undefined;
 }
 
-export const Main = styled.main`
+export const Main = styled.div`
 	height: 100vh;
 	justify-content: center;
 `;
 
 export const Title = styled.h1`
 	margin-bottom: 3.125rem;
+	text-align: center;
 `;
 
 export const Form = styled.form`

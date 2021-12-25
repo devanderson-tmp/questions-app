@@ -8,7 +8,7 @@ function Result() {
 	const score: number = parseInt(localStorage['score']);
 
 	return (
-		<main className='container'>
+		<div>
 			<h1 className='title'>Result</h1>
 			<Styled.Subtitle>{score} of {questions.length} questions answered correctly</Styled.Subtitle>
 
@@ -33,7 +33,7 @@ function Result() {
 				</Styled.Card>
 			))
 			}
-		</main >
+		</div>
 	);
 }
 

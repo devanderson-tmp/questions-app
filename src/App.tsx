@@ -5,6 +5,7 @@ import { QuestionsContextProvider } from './contexts/QuestionsContext';
 import Home from './pages/Home';
 import Questions from './pages/Questions';
 import Result from './pages/Result';
+import Switch from './components/Switch';
 import GlobalStyle from './components/GlobalStyle';
 
 function App() {
@@ -16,14 +17,18 @@ function App() {
 		<QuestionsContextProvider>
 			<ThemeProvider theme={{ mode }}>
 				<GlobalStyle />
-				<BrowserRouter>
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/questions' element={<Questions />} />
-						<Route path='/questions/result' element={<Result />} />
-						<Route path='/recently-answered-questions' element={<Result />} />
-					</Routes>
-				</BrowserRouter>
+				<main className="container">
+					<BrowserRouter>
+						<Routes>
+							<Route path='/' element={<Home />} />
+							<Route path='/questions' element={<Questions />} />
+							<Route path='/questions/result' element={<Result />} />
+							<Route path='/recently-answered-questions' element={<Result />} />
+						</Routes>
+					</BrowserRouter>
+
+					<Switch mode={mode} handleToggleMode={handleToggleMode} />
+				</main>
 			</ThemeProvider>
 		</QuestionsContextProvider>
 	);

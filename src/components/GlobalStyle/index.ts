@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
 
 	.container {
 		padding: 0 .625rem;
+		position: relative;
 
 		@media(min-width: 992px) {
 			margin: 0 auto;

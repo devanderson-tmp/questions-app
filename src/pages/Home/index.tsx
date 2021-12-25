@@ -41,7 +41,7 @@ function Home() {
 	});
 
 	return (
-		<Styled.Main className='container flex flex--center flex--column'>
+		<Styled.Main className='flex flex--center flex--column'>
 			<Styled.Title className='title'>Welcome to the Questions App!!</Styled.Title>
 
 			<Styled.Form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>

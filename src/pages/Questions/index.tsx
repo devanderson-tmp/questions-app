@@ -11,7 +11,7 @@ function Questions() {
 	const navigate = useNavigate();
 
 	return (
-		<main className='container'>
+		<div>
 			<Styled.Title className='title'>Questions</Styled.Title>
 
 			<Formik
@@ -77,7 +77,7 @@ function Questions() {
 					</Form>
 				)}
 			</Formik>
-		</main >
+		</div >
 	);
 }
 
