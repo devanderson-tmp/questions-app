@@ -76,7 +76,7 @@ function Questions() {
 							)}
 						/>
 
-						<Styled.Button type="submit" className='button'>Send</Styled.Button>
+						{questions.length > 0 && <Styled.Button type="submit" className='button'>Send</Styled.Button>}
 					</Form>
 				)}
 			</Formik>
