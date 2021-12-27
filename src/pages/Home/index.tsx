@@ -74,7 +74,7 @@ function Home() {
 				</div>
 			</Styled.Form>
 
-			{localStorage.length > 0 && <Styled.RecentlyLink to='/recently-answered-questions'>Recently answered questions</Styled.RecentlyLink>}
+			{localStorage.getItem('result') !== null && <Styled.RecentlyLink to='/recently-answered-questions'>Recently answered questions</Styled.RecentlyLink>}
 		</Styled.Main>
 	);
 }
