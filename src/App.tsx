@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { QuestionsContextProvider } from './contexts/QuestionsContext';
+import useStateToSaveThemeOnLocalStorage from './hooks/useStateToSaveThemeOnLocalStorage';
 import Home from './pages/Home';
 import Questions from './pages/Questions';
 import Result from './pages/Result';
@@ -9,7 +10,7 @@ import Switch from './components/Switch';
 import GlobalStyle from './components/GlobalStyle';
 
 function App() {
-	const [mode, setMode] = useState('light');
+	const [mode, setMode] = useStateToSaveThemeOnLocalStorage('theme', 'light');
 
 	const handleToggleMode = () => { setMode(mode === 'light' ? 'dark' : 'light'); };
 
