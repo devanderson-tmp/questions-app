@@ -20,16 +20,15 @@ function Result() {
 
 					<Styled.CardTitle dangerouslySetInnerHTML={{ __html: `${q_index + 1}. ${q.question}` }} />
 
-					<div>Selected answer: <span className={q.selected_answer === q.correct_answer ? 'correct-answer' : 'incorrect-answer'}>{q.selected_answer}</span></div>
+					<div>Selected answer: <span className={q.selected_answer === q.correct_answer ? 'correct-answer' : 'incorrect-answer'} dangerouslySetInnerHTML={{__html: q.selected_answer}} /></div>
 
 					<ul>
 						{q.answers.map((answer, a_index) => (
 							<Styled.CardItem
 								key={a_index}
 								className={answer === q.correct_answer ? 'correct-answer' : undefined}
-							>
-								{answer}
-							</Styled.CardItem>
+								dangerouslySetInnerHTML={{__html: answer}}
+							/>
 						))}
 					</ul>
 				</Styled.Card>

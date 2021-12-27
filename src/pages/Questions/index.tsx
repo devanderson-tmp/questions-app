@@ -66,7 +66,7 @@ function Questions() {
 												q.answers.map((answer, a_index) => (
 													<Styled.CardContent key={a_index}>
 														<Styled.CardOption type="radio" name={name} id={`${answer}-${q_index}`} value={answer} onBlur={handleBlur} onChange={handleChange} />
-														<label htmlFor={`${answer}-${q_index}`}>{answer}</label>
+														<label htmlFor={`${answer}-${q_index}`} dangerouslySetInnerHTML={{__html: answer}} />
 													</Styled.CardContent>
 												))
 											}
