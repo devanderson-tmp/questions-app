@@ -1,4 +1,5 @@
 import React from 'react';
+import Breadcrumb from '../../components/Breadcrumb';
 import InfoCard from '../../components/InfoCard';
 import { QuestionProps } from '../../types';
 import * as Styled from './style';
@@ -9,6 +10,7 @@ function Result() {
 
 	return (
 		<div>
+			<Breadcrumb />
 			<h1 className='title'>Result</h1>
 			<Styled.Subtitle>{score} of {questions.length} questions answered correctly</Styled.Subtitle>
 

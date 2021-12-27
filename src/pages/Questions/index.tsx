@@ -4,6 +4,7 @@ import { FieldArray, Form, Formik, getIn } from 'formik';
 import * as Yup from 'yup';
 import useQuestions from '../../hooks/useQuestions';
 import InfoCard from '../../components/InfoCard';
+import Breadcrumb from '../../components/Breadcrumb';
 import * as Styled from './style';
 
 function Questions() {
@@ -12,6 +13,8 @@ function Questions() {
 
 	return (
 		<div>
+			<Breadcrumb />
+
 			<Styled.Title className='title'>Questions</Styled.Title>
 
 			<Formik
@@ -28,7 +31,7 @@ function Questions() {
 
 					localStorage.setItem('score', `${correct_answers.length}`);
 
-					navigate('result');
+					navigate('/result');
 				}}
 				validationSchema={Yup.object({
 					questions: Yup.array().of(

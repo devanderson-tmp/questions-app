@@ -23,7 +23,7 @@ function App() {
 						<Routes>
 							<Route path='/' element={<Home />} />
 							<Route path='/questions' element={<Questions />} />
-							<Route path='/questions/result' element={<Result />} />
+							<Route path='/result' element={<Result />} />
 							<Route path='/recently-answered-questions' element={<Result />} />
 						</Routes>
 					</BrowserRouter>

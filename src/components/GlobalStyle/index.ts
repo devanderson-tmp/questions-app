@@ -88,6 +88,10 @@ const GlobalStyle = createGlobalStyle`
 		content: '✗';
 		color: ${color.danger};
 	}
+
+	.active {
+		font-weight: 500;
+	}
 `;
 
 export default GlobalStyle;
