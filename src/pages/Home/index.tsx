@@ -13,7 +13,7 @@ interface FormValues {
 }
 
 const schema = Yup.object().shape({
-	num: Yup.number().min(1, 'Input a number greater than 0').required('Input a number greater than 0')
+	num: Yup.number().moreThan(0, 'Input a number greater than 0').required('Input a number greater than 0')
 });
 
 function Home() {
@@ -57,6 +57,7 @@ function Home() {
 						onChange={formik.handleChange}
 						error={formik.errors.num}
 						touched={formik.touched.num}
+						placeholder='Enter a number, e.g. 5'
 					/>
 				</div>
 
